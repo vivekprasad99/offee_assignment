@@ -86,6 +86,8 @@ class RecentTabWidget extends StatelessWidget {
   Widget buildFavouriteList() {
     return Expanded(
       child: ListView.separated(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             leading: Image.asset("${favouritesList[index].musicImg}"),

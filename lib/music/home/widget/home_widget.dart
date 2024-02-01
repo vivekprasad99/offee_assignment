@@ -9,11 +9,11 @@ class HomeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: buildBody(),
+      body: SafeArea(child: buildBody(context)),
     );
   }
 
-  Widget buildBody() {
+  Widget buildBody(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
@@ -29,7 +29,7 @@ class HomeWidget extends StatelessWidget {
           ],
         ),
       ),
-      child: SafeArea(
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -45,7 +45,9 @@ class HomeWidget extends StatelessWidget {
             const SizedBox(
               height: 24,
             ),
-            buildTab(),
+            SizedBox(
+                height: MediaQuery.of(context).size.height - 160,
+                child: buildTab()),
           ],
         ),
       ),
@@ -89,7 +91,8 @@ class HomeWidget extends StatelessWidget {
   }
 
   Widget buildTab() {
-    return Expanded(
+    return SizedBox(
+      height: double.infinity,
       child: DefaultTabController(
           length: 5,
           child: Column(
